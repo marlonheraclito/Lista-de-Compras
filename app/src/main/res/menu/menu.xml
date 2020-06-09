@@ -6,4 +6,8 @@
         android:id="@+id/menu_novo"
          android:icon="@drawable/ic_baseline_add_circle_24"
         app:showAsAction="always"/>
+
+    <item android:title="TOTAL"
+        android:id="@+id/menuTotal"
+        app:showAsAction="always"/>
 </menu>

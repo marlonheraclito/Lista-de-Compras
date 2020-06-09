@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Dao daoCompras;
     AdapterWorld adapterWorld;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_novo:
                 abrirNovo();
                 return true;
+
+            case R.id.menuTotal:
+                Toast.makeText(this, calcularTotal() + " $00", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -94,5 +98,14 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Apagado", Toast.LENGTH_SHORT).show();
             adapterWorld.remover(position);
         }
+    }
+
+    public String calcularTotal(){
+        float total = 0;
+        for(int i = 0; i < Common.listaCompras.size(); i ++){
+           total = total + Common.listaCompras.get(i).getTotal();
+        }
+
+        return String.valueOf(total);
     }
 }

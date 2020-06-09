@@ -59,7 +59,7 @@ public class Alterar extends AppCompatActivity {
                 c.setId(c.getId());
                 c.setNome(edtNomeAlterar.getText().toString());
                 c.setQuant(Integer.parseInt(edtQuantAlterar.getText().toString()));
-                c.setPreco(Float.parseFloat(edtQuantAlterar.getText().toString()));
+                c.setPreco(Float.parseFloat(edtPrecoAlterar.getText().toString()));
 
                 Boolean res = dao.alterarCompra(c);
                 if(res){

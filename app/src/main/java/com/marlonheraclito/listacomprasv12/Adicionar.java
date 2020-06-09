@@ -35,13 +35,15 @@ public class Adicionar extends AppCompatActivity {
       adicionarCompra();
     }
 
+
+
     public void adicionarCompra(){
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!edtNovaCompra.getText().toString().equals("") && !edtQuant.getText().toString().equals("") && !edtPreco.getText().toString()
                         .equals("")) {
-                    Compra c = new Compra(edtNovaCompra.getText().toString(), Integer.parseInt(edtQuant.getText().toString()),Float.parseFloat(edtPreco.getText().toString()));
+                    Compra c = new Compra(edtNovaCompra.getText().toString(), Integer.parseInt(edtQuant.getText().toString()),Float.parseFloat(edtPreco.getText().toString()), calcularTotalPreco());
                     long res = dao.adicionarCompra(c);
                     if(res > 0) {
                         Toast.makeText(Adicionar.this, "Salvo", Toast.LENGTH_SHORT).show();
@@ -57,5 +59,11 @@ public class Adicionar extends AppCompatActivity {
 
             }
         });
+    }
+
+    public float calcularTotalPreco(){
+        float mult = Integer.parseInt(edtQuant.getText().toString()) * Float.parseFloat(edtPreco.getText().toString());
+
+        return mult;
     }
 }

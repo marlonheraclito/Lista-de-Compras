@@ -35,10 +35,10 @@ public class AdapterWorld  extends RecyclerView.Adapter<AdapterWorld.WordViewHol
 
     @Override
     public void onBindViewHolder(@NonNull WordViewHolder holder, int position) {
-        holder.txtNome.setText("Nome: " + lista.get(position).getNome());
-        holder.txtQuant.setText("Quantidade: " + lista.get(position).getQuant());
+        holder.txtNome.setText(lista.get(position).getNome());
+        holder.txtQuant.setText("Quant: " + lista.get(position).getQuant());
         holder.txtPreco.setText("Preco: " + lista.get(position).getPreco() + " $00");
-        holder.txtTotal.setText("Total: " + calculoTotal(position) + " $00");
+        holder.txtTotal.setText("Total: " + lista.get(position).getTotal() + " $00");
     }
 
     @Override
@@ -76,11 +76,6 @@ public class AdapterWorld  extends RecyclerView.Adapter<AdapterWorld.WordViewHol
         notifyDataSetChanged();
     }
 
-    public String calculoTotal(int position){
-        int q = lista.get(position).getQuant();
-        float p = lista.get(position).getPreco();
 
-        return String.valueOf(q * p);
-    }
 
 }

@@ -26,6 +26,8 @@ public class Dao {
         contentValues.put("NOME", c.getNome());
         contentValues.put("QUANT", c.getQuant());
         contentValues.put("PRECO", c.getPreco());
+        contentValues.put("TOTAL", c.getTotal());
+
 
         long res = db.insert(helper.TABLE_NAME, null, contentValues);
         // db.close();
@@ -40,7 +42,8 @@ public class Dao {
 
         if(res.getCount()!=0){
             while (res.moveToNext()) {
-                Compra c = new Compra(res.getInt(0), res.getString(1), res.getInt(2), res.getFloat(3));
+                Compra c = new Compra(res.getInt(0), res.getString(1), res.getInt(2), res.getFloat(3),
+                        res.getFloat(4));
                 listaCompras.add(c);
             }
             res.close();
